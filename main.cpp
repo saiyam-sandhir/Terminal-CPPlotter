@@ -1,3 +1,6 @@
+//Author: Saiyam Jain
+//License: MIT LICENSE
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -19,7 +22,7 @@ class Point
             y_coord = p.y_coord;
         }
 
-        double operator |(Point const& obj)
+        double operator |(Point const& obj) //Distance formula
         {
             double distance;
 
@@ -28,7 +31,7 @@ class Point
             return distance;
         }
 
-        Point operator ^(Point const& obj)
+        Point operator ^(Point const& obj) //Midpoint formula
         {
             Point res;
 
@@ -50,7 +53,7 @@ class CartasianPlane
             y_axis = y_len;
         }
 
-        void plot(int x = 0, int y = 0)
+        void plot(int x = 0, int y = 0) //Plot from given coordinates
         {
             for(int i = y_axis; i >= -y_axis; i--)
             {
@@ -82,7 +85,7 @@ class CartasianPlane
         
         }
 
-        void plot(Point p)
+        void plot(Point p) //Plot from given point object
         {
             plot(p.x_coord, p.y_coord);
         }
