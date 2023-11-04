@@ -31,7 +31,7 @@
 <h2>Usage</h2>
 - STEP1 Compile the code using a C++ compiler.</br>
 - STEP2: Execute the compiled program.</br>
-- STEP3: The program will display the Cartasian plan with the plotted points and their distances.
+- STEP3: The program will display the Cartasian plan with the plotted points and their distance.
   
 <h2>License</h2>
 This project is licensed under the MIT License, granting you the freedom to use, modify, and distribute the code as per the MIT License terms.
