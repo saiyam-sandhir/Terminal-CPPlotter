@@ -41,6 +41,7 @@ class Point
             return res;
         }
 };
+
 class CartasianPlane
 {
     private:
