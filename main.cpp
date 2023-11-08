@@ -42,6 +42,48 @@ class Point
         }
 };
 
+class Line
+{
+    public:
+        Point p1, p2;
+
+        Line(Point a, Point b)
+        {
+            p1 = a;
+            p2 = b;
+        }
+
+        bool check_for_point(Point p)
+        {
+            if(p.y_coord - p1.y_coord == ((p2.y_coord - p1.y_coord)/(p2.x_coord - p1.x_coord)*(p.x_coord - p1.x_coord)))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+        bool check_for_point(int x, int y)
+        {
+            Point p(x, y);
+            return check_for_point(p);
+        }
+
+        double get_slope()
+        {
+            double slope;
+
+            slope = (p2.y_coord - p1.y_coord) / (p2.x_coord - p2.x_coord);
+        
+            return slope;
+        }
+
+        void get_eq()
+        {
+            cout << "y=" << get_slope() << "*x" << -get_slope()*p1.x_coord + p1.y_coord;
+        }
+};
+
 class CartasianPlane
 {
     private:
@@ -90,12 +132,51 @@ class CartasianPlane
         {
             plot(p.x_coord, p.y_coord);
         }
+
+        void plot(Line l) //Plot from given line object
+        {
+            for(int i = y_axis; i >= -y_axis; i--)
+            {
+                for(int j = -x_axis; j <= x_axis; j++)
+                {
+                    if(l.check_for_point(i, j))
+                    {
+                        cout << " @ ";
+                    }
+                    else if(i == 0 && j == 0)
+                    {
+                        cout << " + ";
+                    }
+                    else if(j == 0)
+                    {
+                        cout << " | ";
+                    }
+                    else if(i == 0)
+                    {
+                        cout << " - ";
+                    }
+                    else
+                    {
+                        cout << "   ";
+                    }
+                }
+                cout << endl;
+            }
+        }
+
+        void plot(Point a, Point b) //Plot a line from two given points
+        {
+            Line l(a, b);
+            plot(l);
+        }
 };
 
 int main()
 {
-    CartasianPlane cp(3, 12);
-    Point a(1, 0), b(1, 10), c;
+    CartasianPlane cp(12, 12);
+    Point a(-2, 3), b(-5, 0), c;
+    Line l(a, b);
+
 
     c = a^b;
     cp.plot(a);
@@ -105,6 +186,8 @@ int main()
     cp.plot(c);
     cout << endl;
     cout << (a|b);
-    
+    cout << endl;
+    cp.plot(l);
+
     return 0;
 }
