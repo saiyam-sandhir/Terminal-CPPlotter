@@ -21,7 +21,12 @@
 - The | operator overloading allows you to calculate the Euclidean distance between two points.
 - The ^ operator overloading calculates the midpoint between two points and returns a new Point.
 
-<h5>2. CartesianPlane Class</h5>
+<h5>2. Line Class</h5> 
+- The 'Line' class, enables users to define and work with lines in the Cartesian plane.
+- Constructors allow the creation of lines using two points.
+- The 'check_for_point' method determines if a given point lies on the line.
+
+<h5>3. CartesianPlane Class</h5>
 - The CartasianPlane class creates a Cartesian plane with user-defined dimensions in the terminal.
 - It includes a constructor that allows you to set the length of the x and y axes.
 - The plot function in this class can plot points on the Cartesian plane.
@@ -29,9 +34,10 @@
 - The overloaded plot function takes a Point object as input and plots it on the plane.
 
 <h2>Usage</h2>
-- STEP1 Compile the code using a C++ compiler.</br>
-- STEP2: Execute the compiled program.</br>
-- STEP3: The program will display the Cartasian plan with the plotted points and their distance.
+- Compile the code using a C++ compiler.</br>
+- Execute the compiled program.</br>
+- Create 'Point' and 'Line' objects with desired coordinates.
+- Uitlize the 'plot' functions to visualize points and lines on the cartesian plane.
   
 <h2>License</h2>
 This project is licensed under the MIT License, granting you the freedom to use, modify, and distribute the code as per the MIT License terms.
