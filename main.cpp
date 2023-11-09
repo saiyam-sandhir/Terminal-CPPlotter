@@ -167,20 +167,6 @@ class CartasianPlane
 
 int main()
 {
-    CartasianPlane cp(12, 12);
-    Point a(-2, 3), b(-5, 0), c;
-    Line l(a, b);
-\
-    c = a^b;
-    cp.plot(a);
-    cout << endl;
-    cp.plot(b);
-    cout << endl;
-    cp.plot(c);
-    cout << endl;
-    cout << (a|b);
-    cout << endl;
-    cp.plot(l);
 
     return 0;
 }
