@@ -45,17 +45,23 @@ class Point
 class Line
 {
     public:
-        Point p1, p2;
+        Point point1, point2;
 
         Line(Point a, Point b)
         {
-            p1 = a;
-            p2 = b;
+            point1 = a;
+            point2 = b;
+        }
+
+        Line(Line& l)
+        {
+            point1 = l.point1;
+            point2 = l.point2;
         }
 
         bool check_for_point(Point p)
         {
-            if(p.y_coord - p1.y_coord == ((p2.y_coord - p1.y_coord)/(p2.x_coord - p1.x_coord)*(p.x_coord - p1.x_coord)))
+            if(p.y_coord - point1.y_coord == ((point2.y_coord - point1.y_coord)/(point2.x_coord - point1.x_coord)*(p.x_coord - point1.x_coord)))
             {
                 return true;
             }
@@ -67,20 +73,6 @@ class Line
         {
             Point p(x, y);
             return check_for_point(p);
-        }
-
-        double get_slope()
-        {
-            double slope;
-
-            slope = (p2.y_coord - p1.y_coord) / (p2.x_coord - p2.x_coord);
-        
-            return slope;
-        }
-
-        void get_eq()
-        {
-            cout << "y=" << get_slope() << "*x" << -get_slope()*p1.x_coord + p1.y_coord;
         }
 };
 
@@ -176,8 +168,7 @@ int main()
     CartasianPlane cp(12, 12);
     Point a(-2, 3), b(-5, 0), c;
     Line l(a, b);
-
-
+\
     c = a^b;
     cp.plot(a);
     cout << endl;
