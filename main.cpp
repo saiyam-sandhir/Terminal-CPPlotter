@@ -1,5 +1,5 @@
-//Author: Saiyam Jain
-//License: MIT LICENSE
+// Author: Saiyam Jain
+// License: MIT LICENSE
 
 #include <iostream>
 #include <cmath>
@@ -22,7 +22,7 @@ class Point
             y_coord = p.y_coord;
         }
 
-        double operator |(Point const& obj) //Distance formula
+        double operator |(Point const& obj) // Distance formula
         {
             double distance;
 
@@ -31,7 +31,7 @@ class Point
             return distance;
         }
 
-        Point operator ^(Point const& obj) //Midpoint formula
+        Point operator ^(Point const& obj) // Midpoint formula
         {
             Point res;
 
@@ -59,6 +59,7 @@ class Line
             point2 = l.point2;
         }
 
+        // Check if a given point lies on the line
         bool check_for_point(Point p)
         {
             if(p.y_coord - point1.y_coord == ((point2.y_coord - point1.y_coord)/(point2.x_coord - point1.x_coord)*(p.x_coord - point1.x_coord)))
@@ -88,7 +89,8 @@ class CartasianPlane
             y_axis = y_len;
         }
 
-        void plot(int x = 0, int y = 0) //Plot from given coordinates
+        // Plotting functions for points and lines
+        void plot(int x = 0, int y = 0)
         {
             for(int i = y_axis; i >= -y_axis; i--)
             {
@@ -120,12 +122,12 @@ class CartasianPlane
         
         }
 
-        void plot(Point p) //Plot from given point object
+        void plot(Point p)
         {
             plot(p.x_coord, p.y_coord);
         }
 
-        void plot(Line l) //Plot from given line object
+        void plot(Line l)
         {
             for(int i = y_axis; i >= -y_axis; i--)
             {
