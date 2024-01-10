@@ -9,8 +9,6 @@
 
 using namespace std;
 
-class Line;
-
 class Point
 {
     private:
@@ -70,6 +68,10 @@ class Point
 
         friend ostream& operator<<(ostream& out, const Point& p);
 };
+double Point::distance(const Point &p) const
+{
+    return sqrt(pow(static_cast<double>(p.x_coord) - x_coord, 2) + pow(static_cast<double>(p.y_coord) - y_coord, 2));
+}
 
 class Line
 {
