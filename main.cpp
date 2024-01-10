@@ -81,8 +81,8 @@ class Line
         Line(const Line& l):point1(l.point1), point2(l.point2){};
         Line(const double r1, const double theta1, const double r2, const double theta2):point1(Point(r1, theta1)), point2(Point(r2, theta2)){};
         Line(const Point& p1, const Point& p2):point1(p1), point2(p2){};
-        Line(const int coords1[2], const int coords2[2]):point1(coords1), point2(coords2){};
-        Line(const double coords1[2], const double coords2[2]):point1(coords1), point2(coords2){};
+        Line(const int coords1[2], const int coords2[2]):point1(Point(coords1)), point2(Point(coords2)){};
+        Line(const double coords1[2], const double coords2[2]):point1(Point(coords1)), point2(Point(coords2)){};
 
         // Slope formula
         double slope() const;
