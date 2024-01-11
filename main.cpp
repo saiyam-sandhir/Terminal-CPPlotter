@@ -49,11 +49,11 @@ class Point
         }
 
         // Distance formula
-        double distance(const Point &p) const;
+        double distance(const Point& p) const;
         friend double operator-(const Point& p1, const Point& p2);
 
         // Midpoint formula
-        Point midpoint(const Point &p) const;
+        Point midpoint(const Point& p) const;
         friend Point& operator%(const Point& p1, const Point& p2);
 
         operator Point() const
@@ -75,6 +75,10 @@ double Point::distance(const Point &p) const
 double operator-(const Point& p1, const Point& p2)
 {
     return sqrt(pow(static_cast<double>(p2.x_coord) - p1.x_coord, 2) + pow(static_cast<double>(p2.y_coord) - p1.y_coord, 2));
+}
+Point Point::midpoint(const Point& p) const
+{
+    return Point((x_coord + p.x_coord) / 2, (y_coord + p.y_coord) / 2);
 }
 
 class Line
