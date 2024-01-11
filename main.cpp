@@ -54,7 +54,7 @@ class Point
 
         // Midpoint formula
         Point midpoint(const Point& p) const;
-        friend Point& operator%(const Point& p1, const Point& p2);
+        friend Point operator%(const Point& p1, const Point& p2);
 
         operator Point() const
         {
@@ -78,7 +78,11 @@ double operator-(const Point& p1, const Point& p2)
 }
 Point Point::midpoint(const Point& p) const
 {
-    return Point((x_coord + p.x_coord) / 2, (y_coord + p.y_coord) / 2);
+    return *this % p;
+}
+Point operator%(const Point& p1, const Point& p2)
+{
+    return Point((p2.x_coord + p1.x_coord) / 2, (p2.y_coord + p1.y_coord) / 2);
 }
 
 class Line
