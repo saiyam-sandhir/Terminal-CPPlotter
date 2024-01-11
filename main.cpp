@@ -70,6 +70,10 @@ class Point
 };
 double Point::distance(const Point &p) const
 {
+    return *this - p;
+}
+double operator-(const Point& p1, const Point& p2)
+{
     return sqrt(pow(static_cast<double>(p.x_coord) - x_coord, 2) + pow(static_cast<double>(p.y_coord) - y_coord, 2));
 }
 
