@@ -84,6 +84,25 @@ Point operator%(const Point& p1, const Point& p2)
 {
     return Point((p2.x_coord + p1.x_coord) / 2, (p2.y_coord + p1.y_coord) / 2);
 }
+template <typename T>
+vector<T> Point::get_coords(bool polar = false) const
+{
+    switch(polar)
+    {
+        case true:
+            return {r, fmod(theta + 2 * M_PI, 2 * M_PI)}; // Ensuring theta is between 0 and 2*pi
+            break;
+
+        case false:
+            return {x_coord, y_coord};
+            break;
+    }
+}
+ostream& operator<<(ostream& out, const Point& p)
+{
+    out << "{" << p.x_coord << ", " << p.y_coord << "}";
+    return out;
+}
 
 class Line
 {
