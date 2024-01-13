@@ -15,6 +15,7 @@ class Point
         int x_coord, y_coord;
         double r, theta;
 
+        friend class Line;
         friend class CartasianPlane;
 
     public:
@@ -118,7 +119,7 @@ class Line
         Line(const double coords1[2], const double coords2[2]):point1(Point(coords1)), point2(Point(coords2)){};
 
         // Slope formula
-        double slope() const;
+        double slope(void) const;
         
         // Intercept formula
         double get_x_intercept() const;
@@ -141,6 +142,10 @@ class Line
 
         friend ostream& operator<<(ostream& out, const Line& l);
 };
+double Line::slope(void) const
+{
+    return (static_cast<double>(point2.y_coord - point1.y_coord)) / (point2.x_coord - point1.x_coord);
+}
 
 class CartasianPlane
 {
