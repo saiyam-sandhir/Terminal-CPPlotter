@@ -128,8 +128,8 @@ class Line
         // Comparing lines
         bool parallel(const Line &l) const;
         bool perpendicular(const Line &l) const;
-        friend bool operator|(const Line& l1, const Line& l2);
-        friend bool operator_(const Line& l1, const Line& l2);
+        friend bool operator||(const Line& l1, const Line& l2);
+        friend bool operator+(const Line& l1, const Line& l2);
 
         // Distance formula
         int distance(const Point &p) const;
@@ -144,7 +144,23 @@ class Line
 };
 double Line::slope(void) const
 {
-    return (static_cast<double>(point2.y_coord - point1.y_coord)) / (point2.x_coord - point1.x_coord);
+    return (static_cast<double>(point2.y_coord - point1.y_coord))/(point2.x_coord - point1.x_coord);
+}
+bool Line::parallel(const Line &l) const
+{
+    return *this||l;
+}
+bool Line::perpendicular(const Line &l) const
+{
+    return *this+l;
+}
+bool operator||(const Line& l1, const Line& l2)
+{
+    return l1.slope() == l2.slope(); 
+}
+bool operator+(const Line& l1, const Line& l2)
+{
+    return l1.slope() * l2.slope() == -1;
 }
 
 class CartasianPlane
