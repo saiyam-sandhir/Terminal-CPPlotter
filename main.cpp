@@ -160,7 +160,7 @@ bool operator||(const Line& l1, const Line& l2)
 }
 bool operator+(const Line& l1, const Line& l2)
 {
-    return l1.slope() * l2.slope() == -1;
+    return l1.slope() == -l2.slope();
 }
 
 class CartasianPlane
