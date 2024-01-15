@@ -162,6 +162,26 @@ bool operator+(const Line& l1, const Line& l2)
 {
     return l1.slope() == -l2.slope();
 }
+string Line::get_formula() const
+{
+    string formula;
+    if (get_y_intercept() < 0) 
+    {
+        formula = to_string(slope()) + "*x - " + to_string(-get_y_intercept());
+    } 
+    else 
+    {
+        formula = to_string(slope()) + "*x + " + to_string(get_y_intercept());
+    }
+
+    return formula;
+}
+ostream& operator<<(ostream& out, const Line& l)
+{
+    out <<"{" << l.slope() << ", " << l.get_y_intercept() << "}";
+    return out;
+}
+
 
 class CartasianPlane
 {
