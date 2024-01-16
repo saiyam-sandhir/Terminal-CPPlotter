@@ -146,6 +146,14 @@ double Line::slope(void) const
 {
     return (static_cast<double>(point2.y_coord - point1.y_coord))/(point2.x_coord - point1.x_coord);
 }
+double Line::get_x_intercept() const
+{
+    return -get_y_intercept()/slope();
+}
+double Line::get_y_intercept() const
+{
+    return point1.y_coord - slope() * point1.x_coord;
+}
 bool Line::parallel(const Line &l) const
 {
     return *this||l;
