@@ -16,7 +16,7 @@ class Point
         double r, theta;
 
         friend class Line;
-        friend class CartasianPlane;
+        friend class CartesianPlane;
 
     public:
         Point(const int x = 0, const int y = 0)
@@ -190,8 +190,7 @@ ostream& operator<<(ostream& out, const Line& l)
     return out;
 }
 
-
-class CartasianPlane
+class CartesianPlane
 {
     private:
         int x_axis, y_axis;
@@ -200,8 +199,8 @@ class CartasianPlane
         map<char, Line> saved_lines;
 
     public:
-        CartasianPlane(int x_len = 0, int y_len = 0):x_axis(x_len), y_axis(y_len){};
-        CartasianPlane(const CartasianPlane& c):x_axis(c.x_axis), y_axis(c.y_axis){};
+        CartesianPlane(int x_len = 0, int y_len = 0):x_axis(x_len), y_axis(y_len){};
+        CartesianPlane(const CartesianPlane& c):x_axis(c.x_axis), y_axis(c.y_axis){};
 
         // Functions for explicitly changing the axes length
         inline void set_x_len(const int len){ x_axis = len; }
@@ -333,17 +332,17 @@ class CartasianPlane
         /*---------- OPERATORS ----------*/
 
             // For assigning one cartasian plane to another
-            operator CartasianPlane() const
+            operator CartesianPlane() const
             {
-                CartasianPlane temp(*this);
+                CartesianPlane temp(*this);
                 return temp;
             }
 
             // Adding(merging) two cartasian planes
-            friend CartasianPlane operator+(const CartasianPlane cp1, const CartasianPlane cp2);
+            friend CartesianPlane operator+(const CartesianPlane cp1, const CartesianPlane cp2);
 
             // Subtracting(removing commons) two cartasian planes
-            friend CartasianPlane operator-(const CartasianPlane cp1, const CartasianPlane cp2);
+            friend CartesianPlane operator-(const CartesianPlane cp1, const CartesianPlane cp2);
 
         /*-------------------------------*/
 };
