@@ -131,11 +131,11 @@ class Line
         friend bool operator||(const Line& l1, const Line& l2);
         friend bool operator+(const Line& l1, const Line& l2);
 
-        // Distance formula
-        int distance(const Point &p) const;
-        int distance(const Line &l) const;
-        friend int operator-(const Point& p, const Line& l);
-        friend int operator-(const Line& l1, const Line& l2);
+        // // Distance formula
+        // int distance(const Point &p) const;
+        // int distance(const Line &l) const;
+        // friend int operator-(const Point& p, const Line& l);
+        // friend int operator-(const Line& l1, const Line& l2);
 
         // Slope-intercept formula
         string get_formula() const;
