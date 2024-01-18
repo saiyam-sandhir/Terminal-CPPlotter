@@ -359,6 +359,62 @@ void CartesianPlane::save_point(const char name, const int coords[2])
 {
     saved_points[name] = Point(coords);
 }
+void CartesianPlane::delete_point(const char name)
+{
+    saved_points.erase(name);
+}
+void CartesianPlane::delete_all(Point)
+{
+    saved_points.clear();
+}
+bool CartesianPlane::find(Point, const char name) const
+{
+    auto itr = saved_points.find(name);
+
+    if (itr != saved_points.end()) 
+    {
+        return true;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+vector<Point> CartesianPlane::get_points(void) const
+{
+    vector<Point> points;
+    for (const auto& pair : saved_points) 
+    {
+        points.emplace_back(pair.second);
+    }
+
+    return points;
+}
+vector<string> CartesianPlane::get_point_names(bool with_coords = false) const
+{
+    /* 
+    Putting if statement outside the for loop rather than inside
+    to prevent checking in every iteration. 
+    */
+
+    vector<string> names;
+    if(with_coords)
+    {
+        for(auto &pair : saved_points)
+        {
+            names.emplace_back(pair.first + " {" + to_string(pair.second.x_coord) + ", " + to_string(pair.second.y_coord) + '}');
+        }
+    }
+    else
+    {
+        for(auto &pair : saved_points)
+        {
+            names.emplace_back('{' + to_string(pair.second.x_coord) + ", " + to_string(pair.second.y_coord) + '}');
+        }
+    }
+
+    return names;
+}
 
 // class CartesianPlane
 // {
