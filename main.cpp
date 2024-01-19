@@ -415,6 +415,63 @@ vector<string> CartesianPlane::get_point_names(bool with_coords = false) const
 
     return names;
 }
+void CartesianPlane::save_line(const char name, const int x1, const int y1, const int x2, const int y2)
+{
+    saved_lines[name] = Line(x1, y1, x2, y2);
+}
+void CartesianPlane::save_line(const char name, const Point a1, const Point a2)
+{
+    saved_lines[name] = Line(a1, a2);
+}
+void CartesianPlane::save_line(const char name, const int coords1[2], const int coords2[2])
+{
+    saved_lines[name] = Line(coords1, coords2);
+}
+void CartesianPlane::save_line(const char name, const Line& l)
+{
+    saved_lines[name] = l;
+}
+void CartesianPlane::delete_line(const char name)
+{
+    saved_lines.erase(name);
+}
+void CartesianPlane::delete_all(Line)
+{
+    saved_lines.clear();
+}
+bool CartesianPlane::find(Line, const char name) const
+{
+    auto itr = saved_lines.find(name);
+    if(itr != saved_lines.end())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+vector<Line> CartesianPlane::get_lines(void) const
+{
+    vector<Line> lines;
+    for(auto& pair : saved_lines)
+    {
+        lines.emplace_back(pair.second);
+    }
+}
+vector<string> CartesianPlane::get_line_names(void) const
+{
+    vector<string> names;
+    for(auto& pair : saved_lines)
+    {
+        names.emplace_back(pair.first);
+    }
+}
+void CartesianPlane::delete_all(void)
+{
+    saved_points.clear();
+    saved_lines.clear();
+}
 
 // class CartesianPlane
 // {
