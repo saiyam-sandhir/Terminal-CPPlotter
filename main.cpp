@@ -342,6 +342,48 @@ void CartesianPlane::save_point(const char name, const int coords[2])
 {
     saved_points[name] = Point(coords);
 }
+void CartesianPlane::plot(const int x, const int y) const
+{
+    for(int i = y_axis; i >= -y_axis; --i)
+    {
+        for(int j = -x_axis; j <= x_axis; ++j)
+        {
+            if(i == y && j == x)
+            {
+                cout << "@";
+            }
+            else if(i == 0 && j == 0)
+            {
+                cout << "+";
+            }
+            else if(j == 0)
+            {
+                cout << " | ";
+            }
+            else if(i == 0)
+            {
+                cout << " - ";
+            }
+            else
+            {
+                cout << "   ";
+            }
+        }
+    }
+}
+void CartesianPlane::plot(const Point& a) const
+{
+    plot(a.x_coord, a.y_coord);
+}
+void CartesianPlane::plot(Point, const char name) const
+{
+    const Point p = saved_points.at(name);
+    plot(p);
+}
+void CartesianPlane::plot(const int coords[2]) const
+{
+    plot(coords[0], coords[1]);
+}
 void CartesianPlane::delete_point(const char name)
 {
     saved_points.erase(name);
