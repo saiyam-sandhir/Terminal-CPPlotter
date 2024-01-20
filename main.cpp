@@ -329,23 +329,6 @@ class CartesianPlane
             void delete_all(void);
 
         /*--------------------------*/
-
-        /*---------- OPERATORS ----------*/
-
-            // For assigning one Cartesian plane to another
-            operator CartesianPlane() const
-            {
-                CartesianPlane temp(*this);
-                return temp;
-            }
-
-            // Adding(merging) two Cartesian planes
-            friend CartesianPlane operator+(const CartesianPlane cp1, const CartesianPlane cp2);
-
-            // Subtracting(removing commons) two Cartesian planes
-            friend CartesianPlane operator-(const CartesianPlane cp1, const CartesianPlane cp2);
-
-        /*-------------------------------*/
 };
 void CartesianPlane::save_point(const char name, const int x, const int y)
 {
