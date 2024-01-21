@@ -20,14 +20,15 @@ class Point
         friend class CartesianPlane;
 
     public:
-        Point(const int x = 0, const int y = 0)
+        Point(void):x_coord(0), y_coord(0), r(0.0), theta(0.0){};
+        Point(const int x, const int y)
         {
             x_coord = x;
             y_coord = y;
             r = static_cast<double>(x_coord * x_coord) + y_coord * y_coord;
             theta = acos(static_cast<double>(x_coord) / r);
         }
-        Point(const double r_ = 0.0, const double theta_ = 0.0)
+        Point(const double r_, const double theta_)
         {
             r = r_;
             theta = theta_;
