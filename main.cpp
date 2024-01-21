@@ -416,7 +416,7 @@ vector<Point> CartesianPlane::get_points(void) const
 
     return points;
 }
-vector<string> CartesianPlane::get_point_names(bool with_coords = false) const
+vector<string> CartesianPlane::get_point_names(bool with_coords) const
 {
     /* 
     Putting if statement outside the for loop rather than inside
