@@ -88,7 +88,7 @@ Point operator%(const Point& p1, const Point& p2)
     return Point((p2.x_coord + p1.x_coord) / 2, (p2.y_coord + p1.y_coord) / 2);
 }
 template <typename T>
-vector<T> Point::get_coords(bool polar = false) const
+vector<T> Point::get_coords(bool polar) const
 {
     switch(polar)
     {
@@ -497,6 +497,12 @@ void CartesianPlane::delete_all(void)
 {
     saved_points.clear();
     saved_lines.clear();
+}
+
+int main()
+{
+    Point P;
+    return 0;
 }
 
 // class CartesianPlane
