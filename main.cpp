@@ -140,7 +140,7 @@ public:
 };
 double Line::slope(void) const
 {
-    return static_cast<double>(point2.y_coord - point1.y_coord) / (point2.x_coord - point1.x_coord);
+    return static_cast<double>(point2.y_coord - point1.y_coord) / static_cast<double>(point2.x_coord - point1.x_coord);
 }
 double Line::get_x_intercept() const
 {
@@ -156,7 +156,7 @@ bool Line::parallel(const Line &l) const
 }
 bool Line::perpendicular(const Line &l) const
 {
-    return slope() == -1 / l.slope();
+    return slope() * l.slope() == -1.0;
 }
 vector<double> Line::get_coords(bool polar) const
 {
@@ -295,13 +295,29 @@ int main()
     Line l5(p1, p2);
     Line l6({1, 2}, {6, 8});
     Line l7({5.5, 6.0}, {3.679, 43.65});
+
+    Line l_a(0, 1, 2, 1), l_b(0, 2, 2, 2);
+    Line l_A(1, 0, 1, 3), l_B(3, 1, 3, 4);
     cout << l4.slope() << endl;
     cout << l2.get_x_intercept() << endl;
     cout << l2.get_y_intercept() << endl;
     cout << l2.perpendicular(l2) << endl;
     cout << l2.parallel(l2) << endl;
     l1 = l5;
-    cout << l1;
+    cout << l1 << endl;
+    cout << l_a.slope() << " " << l_b.slope() << " " << l_A.slope() << " " << l_B.slope() << " " << l4.slope() << endl;
+    vector<double> coordsl6 = l6.get_coords(true);
+    vector<double> coordsl7 = l7.get_coords();
+    for(vector<double>::iterator itr = coordsl6.begin(); itr != coordsl6.end(); ++itr)
+    {
+        cout << *itr << ' ';
+    }
+    cout << endl;
+    for(vector<double>::iterator itr = coordsl7.begin(); itr != coordsl7.end(); ++itr)
+    {
+        cout << *itr << ' ';
+    }
+    
     return 0;
 }
 
