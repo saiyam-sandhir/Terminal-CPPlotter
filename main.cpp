@@ -64,8 +64,7 @@ public:
         return temp;
     }
 
-    template <typename T>
-    vector<T> get_coords(bool polar = false) const;
+    vector<double> get_coords(bool polar = false) const;
 
     friend ostream &operator<<(ostream &out, const Point &p);
 };
@@ -90,17 +89,16 @@ Point operator%(const Point &p1, const Point &p2)
     return Point((p2.x_coord + p1.x_coord) / 2, (p2.y_coord + p1.y_coord) / 2);
 }
 
-template <typename T>
-vector<T> Point::get_coords(bool polar) const
+vector<double> Point::get_coords(bool polar) const
 {
     switch(polar)
     {
     case true:
-        return {static_cast<T>(r), static_cast<T>(theta)};
+        return {r, theta};
         break;
 
     case false:
-        return {static_cast<T>(x_coord), static_cast<T>(y_coord)};
+        return {static_cast<double>(x_coord), static_cast<double>(y_coord)};
         break;
     }
 }
@@ -141,8 +139,7 @@ public:
         return temp;
     }
 
-    template <typename T>
-    vector<T> get_coords(bool polar = false) const;
+    vector<double> get_coords(bool polar = false) const;
 
     friend ostream &operator<<(ostream &out, const Line &l);
 };
@@ -172,11 +169,10 @@ bool Line::perpendicular(const Line &l) const
     return slope() == -1 / l.slope();
 }
 
-template <typename T>
-vector<T> Line::get_coords(bool polar) const
+vector<double> Line::get_coords(bool polar) const
 {
-    vector<T> coords1 = point1.get_coords<T>(polar);
-    vector<T> coords2 = point2.get_coords<T>(polar);
+    vector<double> coords1 = point1.get_coords(polar);
+    vector<double> coords2 = point2.get_coords(polar);
 
     return {coords1[0], coords1[1], coords2[0], coords2[1]};
 }
@@ -244,12 +240,12 @@ public:
         }
     }
 
-    vector<vector<int>> get_lines(void) const
+    vector<vector<double>> get_lines(void) const
     {
-        vector<vector<int>> line_coords;
+        vector<vector<double>> line_coords;
         for (const auto &pair : lines)
         {
-            vector<int> coords = pair.second.get_coords<int>();
+            vector<double> coords = pair.second.get_coords();
             line_coords.push_back(coords);
         }
         return line_coords;
@@ -260,7 +256,7 @@ public:
         vector<string> names;
         for (const auto &pair : points)
         {
-            names.push_back(pair.first + " {" + to_string(pair.second.get_coords<int>()[0]) + ", " + to_string(pair.second.get_coords<int>()[1]) + '}');
+            names.push_back(pair.first + " {" + to_string(pair.second.get_coords()[0]) + ", " + to_string(pair.second.get_coords()[1]) + '}');
         }
         return names;
     }
@@ -270,7 +266,7 @@ public:
         vector<string> names;
         for (const auto &pair : lines)
         {
-            vector<int> coords = pair.second.get_coords<int>();
+            vector<double> coords = pair.second.get_coords();
             names.push_back(pair.first + " {" + to_string(coords[0]) + ", " + to_string(coords[1]) + ", " + to_string(coords[2]) + ", " + to_string(coords[3]) + '}');
         }
         return names;
@@ -291,9 +287,9 @@ int main()
     cout << p1 % p2 << endl;
     p1 = p4;
     cout << p1 << endl;
-    vector<int> coordsp5 = p5.get_coords<int>();
-    vector<double> coordsp6 = p6.get_coords<double>();
-    for(vector<int>::iterator itr = coordsp5.begin(); itr != coordsp5.end(); ++itr)
+    vector<double> coordsp5 = p5.get_coords();
+    vector<double> coordsp6 = p6.get_coords();
+    for(vector<double>::iterator itr = coordsp5.begin(); itr != coordsp5.end(); ++itr)
     {
         cout << *itr << ' ';
     }
