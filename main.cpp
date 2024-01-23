@@ -291,6 +291,18 @@ int main()
     cout << p1 % p2 << endl;
     p1 = p4;
     cout << p1 << endl;
+    vector<int> coordsp5 = p5.get_coords<int>();
+    vector<double> coordsp6 = p6.get_coords<double>();
+    for(vector<int>::iterator itr = coordsp5.begin(); itr != coordsp5.end(); ++itr)
+    {
+        cout << *itr << ' ';
+    }
+    cout << endl;
+    for(vector<double>::iterator itr = coordsp6.begin(); itr != coordsp6.end(); ++itr)
+    {
+        cout << *itr << ' ';
+    }
+    cout << endl;
     
     Line l1;
     Line l2(1, 2, 3, 8);
