@@ -66,29 +66,24 @@ public:
 
     vector<double> get_coords(bool polar = false) const;
 
-    friend ostream &operator<<(ostream &out, const Point &p);
+    friend ostream& operator<<(ostream &out, const Point &p);
 };
-
 double Point::distance(const Point &p) const
 {
     return *this - p;
 }
-
 double operator-(const Point &p1, const Point &p2)
 {
     return sqrt(pow(static_cast<double>(p2.x_coord) - p1.x_coord, 2) + pow(static_cast<double>(p2.y_coord) - p1.y_coord, 2));
 }
-
 Point Point::midpoint(const Point &p) const
 {
     return *this % p;
 }
-
 Point operator%(const Point &p1, const Point &p2)
 {
     return Point((p2.x_coord + p1.x_coord) / 2, (p2.y_coord + p1.y_coord) / 2);
 }
-
 vector<double> Point::get_coords(bool polar) const
 {
     switch(polar)
@@ -102,7 +97,7 @@ vector<double> Point::get_coords(bool polar) const
         break;
     }
 }
-ostream &operator<<(ostream &out, const Point &p)
+ostream& operator<<(ostream &out, const Point &p)
 {
     out << "{" << p.x_coord << ", " << p.y_coord << "}";
     return out;
@@ -141,34 +136,28 @@ public:
 
     vector<double> get_coords(bool polar = false) const;
 
-    friend ostream &operator<<(ostream &out, const Line &l);
+    friend ostream& operator<<(ostream &out, const Line &l);
 };
-
 double Line::slope(void) const
 {
     return static_cast<double>(point2.y_coord - point1.y_coord) / (point2.x_coord - point1.x_coord);
 }
-
 double Line::get_x_intercept() const
 {
     return -point1.y_coord / slope() + point1.x_coord;
 }
-
 double Line::get_y_intercept() const
 {
     return slope() * (-point1.x_coord) + point1.y_coord;
 }
-
 bool Line::parallel(const Line &l) const
 {
     return slope() == l.slope();
 }
-
 bool Line::perpendicular(const Line &l) const
 {
     return slope() == -1 / l.slope();
 }
-
 vector<double> Line::get_coords(bool polar) const
 {
     vector<double> coords1 = point1.get_coords(polar);
@@ -176,8 +165,7 @@ vector<double> Line::get_coords(bool polar) const
 
     return {coords1[0], coords1[1], coords2[0], coords2[1]};
 }
-
-ostream &operator<<(ostream &out, const Line &l)
+ostream& operator<<(ostream &out, const Line &l)
 {
     out << "[" << l.point1 << ", " << l.point2 << "]";
     return out;
@@ -287,7 +275,7 @@ int main()
     cout << p1 % p2 << endl;
     p1 = p4;
     cout << p1 << endl;
-    vector<double> coordsp5 = p5.get_coords();
+    vector<double> coordsp5 = p5.get_coords(true);
     vector<double> coordsp6 = p6.get_coords();
     for(vector<double>::iterator itr = coordsp5.begin(); itr != coordsp5.end(); ++itr)
     {
