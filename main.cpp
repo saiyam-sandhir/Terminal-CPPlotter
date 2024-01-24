@@ -141,6 +141,14 @@ class Line
         // Slope-intercept formula
         string get_formula() const;
 
+        // Check if a point lies on line
+        bool check_if_lies(void) const;
+        bool check_if_lies(const int x = 0, const int y = 0) const;
+        bool check_if_lies(const double r_ = 0.0, const double theta_ = 0.0) const;
+        bool check_if_lies(const Point& a) const;
+        bool check_if_lies(const int coords[2]) const;
+        bool check_if_lies(const double coords[2]) const;
+
         friend ostream& operator<<(ostream& out, const Line& l);
 };
 double Line::slope(void) const
