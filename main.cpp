@@ -124,6 +124,13 @@ public:
     double get_x_intercept() const;
     double get_y_intercept() const;
 
+    // Check if a point lies on a line
+    bool check_if_lies(const int x1, const int x2) const;
+    bool check_if_lies(const double r1, const double theta) const ;
+    bool check_if_lies(const Point& p) const;
+    bool check_if_lies(const int coords[2]) const;
+    bool check_if_lies(const double coords[2]) const;
+
     // Comparing lines
     bool parallel(const Line &l) const;
     bool perpendicular(const Line &l) const;
@@ -149,6 +156,50 @@ double Line::get_x_intercept() const
 double Line::get_y_intercept() const
 {
     return slope() * (-point1.x_coord) + point1.y_coord;
+}
+bool Line::check_if_lies(const int x, const int y) const
+{
+    if(point1.x_coord / point2.y_coord == x / y && (x - point1.x_coord) / (point2.x_coord - point1.x_coord) == (y - point1.y_coord) / (point2.y_coord - point1.y_coord))
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
+bool Line::check_if_lies(const double r, const double theta) const
+{
+    int x = static_cast<int>(r * cos(theta));
+    int y = static_cast<int>(r * sin(theta));
+
+    if(point1.x_coord / point2.y_coord == x / y && (x - point1.x_coord) / (point2.x_coord - point1.x_coord) == (y - point1.y_coord) / (point2.y_coord - point1.y_coord))
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
+bool Line::check_if_lies(const Point& p) const
+{
+    if(p.x_coord / p.y_coord == p.x_coord / p.y_coord && (p.x_coord - point1.x_coord) / (point2.x_coord - point1.x_coord) == (p.y_coord - point1.y_coord) / (point2.y_coord - point1.y_coord))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool Line::check_if_lies(const int coords[2]) const
+{
+    return check_if_lies(coords[0], coords[1]);
+}
+bool Line::check_if_lies(const double coords[2]) const
+{
+    return check_if_lies(coords[0], coords[1]);
 }
 bool Line::parallel(const Line &l) const
 {
